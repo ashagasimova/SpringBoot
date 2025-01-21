@@ -1,0 +1,17 @@
+version: '3.1'
+services:
+  db:
+    image: postgres:latest
+    container_name: postgres-container
+    environment:
+      POSTGRES_USER: myuser          # Replace with your desired PostgreSQL username
+      POSTGRES_PASSWORD: 12345 # Replace with your desired PostgreSQL password
+      POSTGRES_DB: postgres      # Replace with your desired database name
+    ports:
+      - "5432:5432"                 # Expose port 5432 for PostgreSQL to connect externally
+    volumes:
+      - postgres_data:/var/lib/postgresql/data  # Persist data across container restarts
+
+volumes:
+  postgres_data:
+    driver: local
