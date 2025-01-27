@@ -1,6 +1,9 @@
 package com.example.atlproject.Mapper;
 
 import com.example.atlproject.Dto.ProductResponseDto;
+import com.example.atlproject.Dto.ProductResponseDtoGroupBy;
+import com.example.atlproject.Dto.ProductResponseDtoPrice;
+import com.example.atlproject.Dto.ProductResponseDtoPriceAndName;
 import com.example.atlproject.dao.Entity.ProductEntity;
 import org.springframework.jdbc.datasource.JdbcTransactionObjectSupport;
 import org.springframework.stereotype.Component;
@@ -36,5 +39,34 @@ public class ProductMapper {
 
         return dto;
     }
+
+    public List<ProductResponseDtoGroupBy> ProductEntityListToDtoGroup (List<ProductEntity> entityList) {
+        List<ProductResponseDtoGroupBy> dtos2 = new ArrayList<>();
+        for (ProductEntity e : entityList) {
+            ProductResponseDtoGroupBy dto2 = ProductResponseDtoGroupBy.builder()
+                    .product_name(e.getProduct_name())
+                    .category(e.getCategory())
+                    .build();
+            dtos2.add(dto2);
+        }
+
+        return dtos2;
+    }
+
+
+    public List<ProductResponseDtoPriceAndName> ProductEntityListToDtoPrice(List<ProductEntity> entityList) {
+        List<ProductResponseDtoPriceAndName> dtos3 = new ArrayList<>();
+        for (ProductEntity e : entityList) {
+            ProductResponseDtoPriceAndName dto3 = ProductResponseDtoPriceAndName.builder()
+                    .product_name(e.getProduct_name())
+                    .price(e.getPrice())
+                    .build();
+            dtos3.add(dto3);
+        }
+
+        return dtos3;
+    }
+
+
 
 }

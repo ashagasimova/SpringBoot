@@ -14,3 +14,4 @@ public class ProductResponseDto {
     private String category;
     private Integer stock;
 }
+
