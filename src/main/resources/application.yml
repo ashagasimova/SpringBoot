@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: AtlProject
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: myuser
+    password: 12345
+  jpa:
+    hibernate:
+      ddl-auto: update
+
